@@ -1,0 +1,9 @@
+<h1>日記の編集</h1>
+<%= form_tag "/post/#{@post.id}/update" do %>
+<p>タイトル</p>
+<input name="title" value="<%= @post.title %>">
+<p>内容</p>
+<textarea class="post_content" name="content"><%= @post.content %></textarea>
+<p></p>
+<input type="submit" value="投稿^^">
+<% end %>

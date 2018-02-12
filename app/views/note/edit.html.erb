@@ -1,0 +1,19 @@
+<h1>リストの編集</h1>
+<div class="error">
+    <% @note.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+    <% end %>
+</div>
+<%= form_tag "/note/#{@note.id}/update" do %>
+<p>日本語</p>
+<input value="<%= @note.japanese %>" name="japanese">
+<p>韓国語</p>
+<input value="<%= @note.korean %>" name="korean">
+<p>例文</p>
+<input value="<%= @note.example %>" name="example">
+<p>使用頻度</p>
+<%= select_tag 'fq', options_for_select([
+"★","★★","★★★","★★★★","★★★★★"], @note.fq) %>
+<p></p>
+<input type="submit"　value="編集">
+<% end %>

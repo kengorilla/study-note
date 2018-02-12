@@ -1,15 +1,68 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+.time{
+    color:white;
+    font-size:10px;
+}
+
+.container{
+    background-color:skyblue;   
+    color:gray;
+    line-height:25px;
+    font-size:20px;
+}
+
+header {
+  height: 65px;
+  width: 100%;
+  background-color:#19AA9C;
+
+}
+
+.contents{
+    width: 100%;
+
+    color:white;
+    font-family:fantasy;
+    margin: 0 auto;
+}
+
+
+header li{
+    list-style: none;
+    padding-right: 30px;
+    float: left;
+}
+
+.flash {
+    padding: 10px 0;
+    color: black;
+    background: yellow;
+    text-align: center;
+    position: absolute;
+    top: 64px;
+    z-index: 10;
+    width: 100%;
+    border-radius: 0 0 2px 2px;
+    font-size: 14px;
+}
+
+.error{
+    background: rgb(251, 170, 88);
+    color: white;
+}
+
+.contents_wrapper{
+    height:1000px;
+    background-size:cover;
+}
+
+.post_content{
+    height:100px;
+    width:500px;
+}
+
+.container_2{
+    background-color:#d2ffcc;   
+    color:gray;
+    line-height:25px;
+    font-size:20px;
+}

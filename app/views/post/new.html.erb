@@ -1,0 +1,14 @@
+<h1>日記の投稿</h1>
+<div class="error">
+    <% @post.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+    <% end %>
+</div>
+<%= form_tag "/post/create" do %>
+<p>タイトル</p>
+<input name="title" value="<%= @post.title %>">
+<p>内容</p>
+<textarea class="post_content" name="content"><%= @post.content %></textarea>
+<p></p>
+<input type="submit" value="投稿^^">
+<% end %>

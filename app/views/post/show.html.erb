@@ -1,0 +1,37 @@
+<h1>日記の詳細</h1>
+<div class="container_2">
+<p>タイトル</p>
+<%= @post.title %>
+<p>内容</p>
+<%= @post.content %>
+<p>投稿時間:</p>
+<%= @post.created_at.strftime("%Y年%m月%d日 %H時%M分") %>
+<p>最新更新時間:</p>
+<%= @post.updated_at.strftime("%Y年%m月%d日 %H時%M分") %>
+<p></p>
+<% if @current_user.id == @post.user_id %>
+<%= link_to "編集", "/post/#{@post.id}/edit" %>
+<%= link_to "削除", "/post/#{@post.id}/destroy", {method: :post} %>
+<% end %> 
+</div>
+<div class="comment">
+    <h3>この投稿にコメントする</h3>
+        <%= form_tag "/comment/#{@post.id}/create" do %>
+            <textarea name="content"></textarea>
+            <p></p>
+            <input type="submit" value="コメントする">
+        <% end %>
+    <h3>コメント:<%= @post.comments.count %>件</h3>
+        <div class="comment.index"></div>
+            <% @comments.each do |comment| %>
+                <p>ユーザー:
+                <%= comment.user.name %></p>
+                <p>内容:
+                <%= comment.content %></p>
+                <% if @current_user.id == comment.user_id %>
+                    <%= link_to "編集","/comment/#{comment.id}/edit" %>
+                    <%= link_to "消去","/comment/#{comment.id}/destroy", {method: :post} %>
+                <% end %>
+            <% end %>
+        </div>
+</div>

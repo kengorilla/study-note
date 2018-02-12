@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  japanese: MyString
+  korean: MyString
+  example: MyString
+  fq: MyString
+
+two:
+  japanese: MyString
+  korean: MyString
+  example: MyString
+  fq: MyString
