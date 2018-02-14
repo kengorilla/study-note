@@ -26,7 +26,7 @@ class NoteController < ApplicationController
     if params[:od].blank? && params[:search].nil?
       @notes=@current_user_notes.all.order(created_at: :desc)
     else
-      if params[:od] == "Most recent"
+      if params[:od] == "Most frequent"
         @notes=@current_user_notes.all.order(fq: :desc)
       else
         @notes=@current_user_notes.all.order(created_at: :desc)
