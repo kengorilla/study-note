@@ -1,20 +1,20 @@
-<h1>リスト追加</h1>
+<h1>Add Words</h1>
 <div class="error">
     <% @note.errors.full_messages.each do |message| %>
         <p><%= message %></p>
     <% end %>
 </div>
 <%= form_tag "/note/create" do %>
-<p>日本語</p>
+<p>Japanese</p>
 <input name="japanese" value="<%= "#{@note.japanese}" %>">
-<p>韓国語</p>
+<p>English</p>
 <input name="korean" value="<%= "#{@note.korean}" %>">
-<p>例文</p>
+<p>Example sentense</p>
 <input name="example" value="<%= "#{@note.example}" %>">
-<p>使用頻度</p>
+<p>Frequency</p>
 <%= select_tag 'fq', options_for_select([
 "","★","★★","★★★","★★★★","★★★★★"], @note.fq) %>
 <p></p>
-<input type="submit"　value="投稿">
+<input type="submit" value="Add">
 <% end %>
 

@@ -1,23 +1,23 @@
-<h1>リスト一覧</h1>
+<h1>Words</h1>
 
 <%= form_tag "/note/index", method: :get do %>
-  <%= select_tag 'od', options_for_select(["追加日時", "使用頻度"], params[:od]),
+  <%= select_tag 'od', options_for_select(["Most recent", "Most frequent"], params[:od]),
   :include_blank => true %>
-  <input type="submit" value="並び替え">
-  <span>List件数:<%= @list_count %></span>
+  <input type="submit" value="Sort">
+  <span>List:<%= @list_count %></span>
   <p></p>
   <input name="search">
-  <input type="submit" value="検索">
+  <input type="submit" value="Search">
 <% end %>
 
 <% @notes.each do |note| %>
   <div class="container">
-    <p>日本語:<%= note.japanese %></p>
-    <p>한국어:<%= note.korean %></p>
-    <p>例文예문:<%= note.example %></p>
-    <p>使用頻度:<%= note.fq %></p>
+    <p>Japanese:<%= note.japanese %></p>
+    <p>English:<%= note.korean %></p>
+    <p>Example sentense:<%= note.example %></p>
+    <p>Frequency:<%= note.fq %></p>
     <span class="time"><%= note.created_at %></span>
-    <%= link_to "消す", "/note/#{note.id}/destroy", {method: :post} %>
-    <%= link_to "編集", "/note/#{note.id}/edit" %>
+    <%= link_to "Delete", "/note/#{note.id}/destroy", {method: :post} %>
+    <%= link_to "Edit", "/note/#{note.id}/edit" %>
   </div class="container">
 <% end %>

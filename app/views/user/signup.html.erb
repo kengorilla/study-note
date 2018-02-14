@@ -1,0 +1,18 @@
+<h1>Welcome to Study Note</h1>
+<h3>Please sign up to start study!</h3>
+<div>
+    <div class="error_messages">
+        <% if @error_messages %>
+            <%= @error_messages %>
+        <% end %>
+    </div> 
+    <%= form_tag "/signup" do %>
+        <p>Name</p>
+        <input name="name">
+        <p>Password</p>
+        <input type="password" name="password">
+        <p></p>
+        <input type="submit" value="Sign Up">
+    <% end %>
+    
+</div>

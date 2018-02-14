@@ -66,3 +66,7 @@ header li{
     line-height:25px;
     font-size:20px;
 }
+
+.error_messages{
+    color:red;
+}

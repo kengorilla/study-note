@@ -1,8 +1,16 @@
-<h2>本サービスについて</h2>
-<p>日本語、韓国語学習者のためのサービスです</p>
+<h2>About Study Note</h2>
+<p>For everyone learning languages</p>
 <ul>
-    <li>NameとPasswordを正しく入力し、サインインしてください</li>
-    <li>「Add List」で新しく学習した単語について、空白を埋めていきます。例文項目については、入力せずとも、保存できます。</li>
-    <li>「List Index」で保存した単語の復習ができます。追加日時、使用頻度によって、並び替え見ることができます。</li>
-    <li>使用後は、「Logout」をクリックしてください</li>
+    <% if @current_user %>
+        <li>You can add words to click "Add word". Challengehe quiz using the words you added.</li>
+        <li>Please add word you want to remember. You can save the words without example sentense.</li>
+        <li>Click "Words" to see your words. You can sort by time and frequncy.</li>
+        <li>"Diary" is open space. You can post question and get asnwer from other user.</li>
+        <li>If you find grammer mistake on others diary, you can make comment and let him/her know.</li>
+        <li>Make sure to log out after using.</li>
+    <% else %>
+        <li>Please sign up to enjoy "Study Note"!</li>
+        <li>You can save the words you want to memorize and challenge the quiz.</li>
+        <li>You can also get advise from other user regarding the language you want to learn.</li>
+    <% end %>
 </ul>

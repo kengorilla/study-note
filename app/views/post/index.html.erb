@@ -1,14 +1,14 @@
-<h1>日記一覧</h1>
+<h1>Diaries</h1>
 <% if @post_count==0 %>
-    <p>日記がありません</p>
+    <p>There is no diary yet</p>
 <% else %>
-    <p>件数:<%= @post_count %></p>
+    <p>Diaries:<%= @post_count %></p>
 <% end %>
 <div>
 <% @posts.each do |post| %>
 <%= link_to post.title,"/post/#{post.id}/show" %>
 (<%= post.created_at.strftime("%Y年%m月%d日") %> by <%= post.user.name %>)
-コメント:<%= post.comments.count %>件
+<%= post.comments.count %> comments
 <p></p>
 </div>
 <% end %>

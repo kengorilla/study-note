@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   
-  get "/"=>"user#home"
+  get "/" => "user#signup"
+  post "/signup" => "user#create" 
+  get "/signin"=>"user#home"
   post "login" =>"user#login"
   post "logout" => "user#logout"
+  get "/user/index" => "user#index"
   get "/top" => "home#top"
   get "/note/new" =>"note#new"
   get "/note/index" => "note#index"

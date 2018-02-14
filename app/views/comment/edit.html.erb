@@ -1,24 +1,24 @@
-<h1>日記の詳細</h1>
+<h1>Edit Comment</h1>
 <div class="container_2">
-<p>タイトル</p>
+<p>Title</p>
 <%= @post.title %>
-<p>内容</p>
+<p>Content</p>
 <%= @post.content %>
-<p>投稿時間:</p>
+<p>Created at:</p>
 <%= @post.created_at.strftime("%Y年%m月%d日 %H時%M分") %>
-<p>最新更新時間:</p>
+<p>Updated at:</p>
 <%= @post.updated_at.strftime("%Y年%m月%d日 %H時%M分") %>
 <p></p>
 </div>
 <div class="comment">
-    <h3>コメント</h3>
+    <h3>Comment</h3>
         <div class="comment.index">
             <%= form_tag "/comment/#{@comment.id}/update" do %>
-                <p>ユーザー:
+                <p>User:
                 <%= @comment.user.name %></p>
-                <p>内容:
+                <p>Content:
                 <textarea name="content"><%= @comment.content %></textarea></p>
-                <input type="submit" value="変更する">
+                <input type="submit" value="Edit">
             <% end %>
         </div>
 </div>

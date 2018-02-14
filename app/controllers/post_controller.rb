@@ -10,10 +10,10 @@ before_action :ensure_correct_user,{only: [:edit, :update, :destroy]}
     @post=Post.new(title: params[:title], content: params[:content],
     user_id: @current_user.id)
     if @post.save
-      flash[:notice]="日記を追加しました"
+      flash[:notice]="Added diary"
       redirect_to("/post/index")
     else 
-      flash[:notice]="保存に失敗しました"
+      flash[:notice]="Fail to add diary"
       render "post/new"
     end
   end
@@ -32,10 +32,10 @@ before_action :ensure_correct_user,{only: [:edit, :update, :destroy]}
     @post.title=params[:title]
     @post.content=params[:content]
     if @post.save
-      flash[:notice]="日記を編集しました"
+      flash[:notice]="Editted the diary"
       redirect_to("/post/index")
     else 
-      flash[:notice]="保存に失敗しました"
+      flash[:notice]="Fail to edit the diary"
       render "post/edit"
     end
   end
@@ -43,7 +43,7 @@ before_action :ensure_correct_user,{only: [:edit, :update, :destroy]}
   def destroy
     @post=Post.find_by(id: params[:id])
     @post.destroy
-    flash[:notice]="日記を削除しました"
+    flash[:notice]="Deleted diary"
     redirect_to "/post/index"
   end
   
@@ -55,7 +55,7 @@ before_action :ensure_correct_user,{only: [:edit, :update, :destroy]}
   def ensure_correct_user
     @post=Post.find_by(id: params[:id])
     if @current_user.id != @post.user_id
-      flash[:notice]="ほかの人の日記は、変更できません"
+      flash[:notice]="You cannot change others diary"
       redirect_to("/post/index")
     end
   end

@@ -1,18 +1,19 @@
+<h1>Word Quiz</h1>
 <div>
     <% if @current_user_note==nil %>
-        <p>リストがありません</p>
-        <%= link_to "リストを追加する", "/note/new" %>
+        <p>There is no word yet</p>
+        <%= link_to "Add word", "/note/new" %>
     <% else %>
         <p>
             
         </p>
-        <div><%= link_to "シャッフル", "/quiz/home" %></div>
+        <div><%= link_to "Shuffle", "/quiz/home" %></div>
         <%= form_tag "/quiz/#{@current_user_note.id}/check" do %>
             <div><%= @current_user_note.japanese %></div>
             <input name ="answer" autocomplete="off">
-            <input type ="submit" value ="回答">
+            <input type ="submit" value ="Answer">
         <% end %>
         <%= @answer %>
-        <%= link_to "リストをもっと追加する", "/note/new" %>
+        <%= link_to "Add more words to enjoy quiz!", "/note/new" %>
     <% end %>
 </div>

@@ -8,10 +8,10 @@ class CommentController < ApplicationController
         post_id: params[:id])
         if @comment.save
             redirect_to "/post/#{params[:id]}/show"
-            flash[:notice]="日記にコメントしました"
+            flash[:notice]="You made comment on diary"
         else 
             redirect_to "/post/#{params[:id]}/show"
-            flash[:notice]="コメントの保存に失敗しました。コメントは空白、100文字以上は反映されません"
+            flash[:notice]="Fail to save comment.Comment cannot be blanck and should be less than 100 characters"
         end
     end
     
@@ -25,10 +25,10 @@ class CommentController < ApplicationController
         @comment.content= params[:content]
         if @comment.save
             redirect_to "/post/#{@comment.post_id}/show"
-            flash[:notice]="コメントを編集しました"
+            flash[:notice]="Editted comment!"
         else 
             redirect_to "/post/#{@comment.post_id}/show"
-            flash[:notice]="コメントの編集に失敗しました。コメントは空白、100文字以上は反映されません"
+            flash[:notice]="Fail to edit comment.Comment cannot be blanck and should be less than 100 characters"
         end
     end
     
@@ -36,13 +36,13 @@ class CommentController < ApplicationController
         @comment=Comment.find_by(id: params[:id])
         @comment.destroy
         redirect_to "/post/#{@comment.post_id}/show"
-        flash[:notice]="コメントを消しました"
+        flash[:notice]="Deleted comment"
     end    
 
     def ensure_correct_user
         @comment=Comment.find_by(id: params[:id])
         if @current_user.id != @comment.user_id
-          flash[:notice]="ほかの人のコメントは、変更できません"
+          flash[:notice]="You cannnot change others comment"
           redirect_to "/post/#{@comment.post_id}/show"
         end
     end

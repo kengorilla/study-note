@@ -11,10 +11,10 @@ class NoteController < ApplicationController
     @note=Note.new(japanese:params[:japanese], korean:params[:korean], 
     example:params[:example], fq:params[:fq], user_id: @current_user.id)
     if @note.save
-      flash[:notice]="リストを追加しました。"
+      flash[:notice]="Add words"
       redirect_to "/note/index"
     else 
-      flash[:notice]="追加に失敗しました。"
+      flash[:notice]="Fail to add words"
       render "note/new"
     end
   end
@@ -26,7 +26,7 @@ class NoteController < ApplicationController
     if params[:od].blank? && params[:search].nil?
       @notes=@current_user_notes.all.order(created_at: :desc)
     else
-      if params[:od] == "使用頻度"
+      if params[:od] == "Most recent"
         @notes=@current_user_notes.all.order(fq: :desc)
       else
         @notes=@current_user_notes.all.order(created_at: :desc)
@@ -48,7 +48,7 @@ class NoteController < ApplicationController
   def destroy
     @note=Note.find_by(id: params[:id])
     @note.destroy
-    flash[:notice]="Listを消去しました"
+    flash[:notice]="Deleted word"
     redirect_to("/note/index")
   end
   
@@ -63,10 +63,10 @@ class NoteController < ApplicationController
     @note.example=params[:example]
     @note.fq=params[:fq]
     if @note.save
-      flash[:notice]="リストを編集しました"
+      flash[:notice]="Editted the word"
       redirect_to("/note/index")
     else 
-      flash[:notice]="編集に失敗しました"
+      flash[:notice]="Fail to edit the word"
       render "note/edit"
     end
   end
@@ -74,7 +74,7 @@ class NoteController < ApplicationController
    def ensure_correct_user
         @note=Note.find_by(id: params[:id])
         if @current_user.id != @note.user_id
-          flash[:notice]="ほかの人のリストは、変更できません"
+          flash[:notice]="You cannot others words"
           redirect_to "/note/index"
         end
    end
