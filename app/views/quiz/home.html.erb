@@ -3,7 +3,9 @@
         <p>リストがありません</p>
         <%= link_to "リストを追加する", "/note/new" %>
     <% else %>
-        <div></div>
+        <p>
+            
+        </p>
         <div><%= link_to "シャッフル", "/quiz/home" %></div>
         <%= form_tag "/quiz/#{@current_user_note.id}/check" do %>
             <div><%= @current_user_note.japanese %></div>
@@ -11,5 +13,6 @@
             <input type ="submit" value ="回答">
         <% end %>
         <%= @answer %>
+        <%= link_to "リストをもっと追加する", "/note/new" %>
     <% end %>
 </div>
