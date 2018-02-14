@@ -4,7 +4,7 @@ class CreateNotes < ActiveRecord::Migration[5.1]
       t.string :japanese
       t.string :korean
       t.string :example
-      t.string :fq
+      t.string :fq 
 
       t.timestamps
     end

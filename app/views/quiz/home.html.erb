@@ -1,0 +1,11 @@
+<div>
+    <div><%= link_to "シャッフル", "/quiz/home" %></div>
+</div>
+<div>
+    <%= form_tag "/quiz/#{@current_user_note.id}/check" do %>
+        <div><%= @current_user_note.japanese %></div>
+        <input name ="answer" autocomplete="off">
+        <input type ="submit" value ="回答">
+    <% end %>
+    <%= @answer %>
+</div>

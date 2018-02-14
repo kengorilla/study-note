@@ -25,5 +25,7 @@ Rails.application.routes.draw do
   post "/comment/:id/update" =>"comment#update"
   post "/comment/:id/destroy" => "comment#destroy"
   
+  get "/quiz/home" => "quiz#home"
+  post "/quiz/:id/check" => "quiz#check"
  
 end

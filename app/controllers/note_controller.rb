@@ -1,5 +1,6 @@
 class NoteController < ApplicationController
   before_action :authenticate_user,{only: [:new, :create, :index, :destroy, :edit, :update]}
+  before_action :ensure_correct_user,{only: [:edit, :destroy, :update]}
   
   
   def new
@@ -8,7 +9,7 @@ class NoteController < ApplicationController
   
   def create
     @note=Note.new(japanese:params[:japanese], korean:params[:korean], 
-    example:params[:example], fq:params[:fq])
+    example:params[:example], fq:params[:fq], user_id: @current_user.id)
     if @note.save
       flash[:notice]="リストを追加しました。"
       redirect_to "/note/index"
@@ -19,29 +20,27 @@ class NoteController < ApplicationController
   end
   
   def index
-    @list_count=Note.all.count
+    @current_user_notes=Note.where(user_id: @current_user.id)
+    @list_count=@current_user_notes.count
     
     if params[:od].blank? && params[:search].nil?
-      @notes=Note.all.order(created_at: :desc)
+      @notes=@current_user_notes.all.order(created_at: :desc)
     else
       if params[:od] == "使用頻度"
-        @notes=Note.all.order(fq: :desc)
+        @notes=@current_user_notes.all.order(fq: :desc)
       else
-        @notes=Note.all.order(created_at: :desc)
+        @notes=@current_user_notes.all.order(created_at: :desc)
       end
       
       if params[:search]==""
       else
-        if Note.where('japanese LIKE(?)', "<% #{params[:search]} %>")
-          @search_results_jap=Note.where('japanese LIKE(?)', "%#{params[:search]}%")
+        if @current_user_notes.where('japanese LIKE(?)', "<% #{params[:search]} %>")
+          @search_results_jap=@current_user_notes.where('japanese LIKE(?)', "%#{params[:search]}%")
         end
-        if Note.where('korean LIKE(?)', "<% #{params[:search]} %>")
-          @search_results_kor=Note.where('korean LIKE(?)', "%#{params[:search]}%")
+        if @current_user_notes.where('korean LIKE(?)', "<% #{params[:search]} %>")
+          @search_results_kor=@current_user_notes.where('korean LIKE(?)', "%#{params[:search]}%")
         end
-        if Note.where('example LIKE(?)', "<% #{params[:search]} %>")
-          @search_results_exa=Note.where('example LIKE(?)', "%#{params[:search]}%")
-        end
-        @notes= @search_results_exa + @search_results_jap + @search_results_kor
+        @notes= @search_results_jap + @search_results_kor
       end
     end
   end
@@ -71,5 +70,13 @@ class NoteController < ApplicationController
       render "note/edit"
     end
   end
+  
+   def ensure_correct_user
+        @note=Note.find_by(id: params[:id])
+        if @current_user.id != @note.user_id
+          flash[:notice]="ほかの人のリストは、変更できません"
+          redirect_to "/note/index"
+        end
+   end
 
 end
