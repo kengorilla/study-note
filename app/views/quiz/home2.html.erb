@@ -1,6 +1,6 @@
 <h1>Word Quiz</h1>
 <div>
-    <p><%= link_to "You want to test Japanese words?", "/quiz/japanese/home" %></p>
+    <p><%= link_to "You want to test English words?", "/quiz/home" %></p>
 </div>
 
 <div>
@@ -11,8 +11,8 @@
         <p>
             
         </p>
-        <%= form_tag "/quiz/#{@current_user_note.id}/check" do %>
-            <div><%= @current_user_note.japanese %></div>
+        <%= form_tag "/quiz/#{@current_user_note.id}/check/japanese" do %>
+            <div><%= @current_user_note.korean %></div>
             <input name ="answer" autocomplete="off">
             <input type ="submit" value ="Answer">
         <% end %>

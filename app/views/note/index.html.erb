@@ -1,5 +1,5 @@
 <h1>Words</h1>
-
+<%= link_to "Add words", "/note/new" %>
 <%= form_tag "/note/index", method: :get do %>
   <%= select_tag 'od', options_for_select(["Most recent", "Most frequent"], params[:od]),
   :include_blank => true %>
