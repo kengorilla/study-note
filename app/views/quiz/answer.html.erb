@@ -1,0 +1,12 @@
+<h1>Word Quiz</h1>
+<p>
+</p>
+<h2>Please check correct answer as below.</h2>
+<div>
+    <p>Answer: <span class="correct_answer"><%= @correct_answer.korean %></span></p>
+    <p>Example sentense: <span class="correct_answer"><%= @correct_answer.example %></span></p>
+</div>
+<h2><%= link_to "Go to next quiz", "/quiz/home" %></h2>
+<p>
+<%= link_to "Add more words to enjoy quiz!", "/note/new" %>
+</p>

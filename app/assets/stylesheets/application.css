@@ -1,19 +1,18 @@
 .time{
-    color:white;
+    color:gray;
     font-size:10px;
 }
 
 .container{
-    background-color:skyblue;   
-    color:gray;
-    line-height:25px;
+    background-color:#e1f7f1;
+    line-height:15px;
     font-size:20px;
 }
 
 header {
   height: 65px;
   width: 100%;
-  background-color:black;
+  background-color:gray;
   color:white;
 }
 
@@ -61,12 +60,23 @@ header li{
 }
 
 .container_2{
-    background-color:#d2ffcc;   
-    color:gray;
-    line-height:25px;
+    background-color:#f9e0e0;
+    line-height:15px;
     font-size:20px;
 }
 
 .error_messages{
     color:red;
+}
+
+.correct_answer{
+    color:red;
+}
+
+.no_important{
+    font-size:15px;
+}
+
+.comment_index{
+    background-color:#f7eded;
 }

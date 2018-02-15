@@ -7,12 +7,13 @@
         <p>
             
         </p>
-        <div><%= link_to "Shuffle", "/quiz/home" %></div>
         <%= form_tag "/quiz/#{@current_user_note.id}/check" do %>
             <div><%= @current_user_note.japanese %></div>
             <input name ="answer" autocomplete="off">
             <input type ="submit" value ="Answer">
         <% end %>
+        <p>
         <%= link_to "Add more words to enjoy quiz!", "/note/new" %>
+        </p>
     <% end %>
 </div>

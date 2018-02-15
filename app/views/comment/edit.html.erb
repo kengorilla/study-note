@@ -1,18 +1,13 @@
 <h1>Edit Comment</h1>
 <div class="container_2">
-<p>Title</p>
-<%= @post.title %>
-<p>Content</p>
-<%= @post.content %>
-<p>Created at:</p>
-<%= @post.created_at.strftime("%Y年%m月%d日 %H時%M分") %>
-<p>Updated at:</p>
-<%= @post.updated_at.strftime("%Y年%m月%d日 %H時%M分") %>
+<p><span class="no_important">Title: </span><%= @post.title %></p>
+    <p><span class="no_important">Content: </span><%= @post.content %></p>
+    <p class="no_important">Updated at: <%= @post.updated_at.strftime("%Y年%m月%d日 %H時%M分") %></p>
 <p></p>
 </div>
 <div class="comment">
     <h3>Comment</h3>
-        <div class="comment.index">
+        <div class="comment_index">
             <%= form_tag "/comment/#{@comment.id}/update" do %>
                 <p>User:
                 <%= @comment.user.name %></p>

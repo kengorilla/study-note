@@ -30,5 +30,6 @@ Rails.application.routes.draw do
   
   get "/quiz/home" => "quiz#home"
   post "/quiz/:id/check" => "quiz#check"
+  get "/quiz/:id/answer" => "quiz#answer"
  
 end

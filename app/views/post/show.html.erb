@@ -1,18 +1,16 @@
 <h1>Diaries</h1>
 <div class="container_2">
-<p>Title</p>
-<%= @post.title %>
-<p>Content</p>
-<%= @post.content %>
-<p>Created at:</p>
-<%= @post.created_at.strftime("%Y年%m月%d日 %H時%M分") %>
-<p>Updated at:</p>
-<%= @post.updated_at.strftime("%Y年%m月%d日 %H時%M分") %>
-<p></p>
-<% if @current_user.id == @post.user_id %>
-<%= link_to "Edit", "/post/#{@post.id}/edit" %>
-<%= link_to "Delete", "/post/#{@post.id}/destroy", {method: :post} %>
-<% end %> 
+    <p><span class="no_important">Title: </span><%= @post.title %></p>
+    <p><span class="no_important">Content: </span><%= @post.content %></p>
+    <p class="no_important">Updated at: <%= @post.updated_at.strftime("%Y年%m月%d日 %H時%M分") %></p>
+        
+    <p></p>
+        <div class="no_important">
+            <% if @current_user.id == @post.user_id %>
+                <%= link_to "Edit", "/post/#{@post.id}/edit" %>
+                <%= link_to "Delete", "/post/#{@post.id}/destroy", {method: :post} %>
+            <% end %>
+        </div>
 </div>
 <div class="comment">
     <h3>Write comment on this diary</h3>
@@ -22,16 +20,20 @@
             <input type="submit" value="Comment">
         <% end %>
     <h3>Comment:<%= @post.comments.count %>件</h3>
-        <div class="comment.index"></div>
+        <div>
             <% @comments.each do |comment| %>
-                <p>User:
-                <%= comment.user.name %></p>
-                <p>Content:
-                <%= comment.content %></p>
-                <% if @current_user.id == comment.user_id %>
-                    <%= link_to "Edit","/comment/#{comment.id}/edit" %>
-                    <%= link_to "Delete","/comment/#{comment.id}/destroy", {method: :post} %>
-                <% end %>
+                <div class= "comment_index">
+                    <p>User:
+                        <%= comment.user.name %></p>
+                    <p>Content:
+                        <%= comment.content %></p>
+                    <div class="no_important">
+                        <% if @current_user.id == comment.user_id %>
+                            <%= link_to "Edit","/comment/#{comment.id}/edit" %>
+                            <%= link_to "Delete","/comment/#{comment.id}/destroy", {method: :post} %>
+                        <% end %>
+                    </div>
+                </div>
             <% end %>
         </div>
 </div>

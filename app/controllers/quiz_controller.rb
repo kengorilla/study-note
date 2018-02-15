@@ -8,12 +8,16 @@ class QuizController < ApplicationController
   def check
       @note = Note.find_by(id: params[:id])
     if params[:answer] == @note.korean
-        flash[:notice]="correct"
+        flash[:notice]="Correct! Try next quiz!"
         redirect_to "/quiz/home"
     else    
-        flash[:notice]="incorrect"
-        redirect_to "/quiz/home"
+        flash[:notice]="Incorrect"
+        redirect_to "/quiz/#{@note.id}/answer"
     end
+  end
+  
+  def answer
+    @correct_answer = Note.find_by(id: params[:id])
   end
   
   

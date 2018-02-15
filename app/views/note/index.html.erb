@@ -12,12 +12,12 @@
 
 <% @notes.each do |note| %>
   <div class="container">
-    <p>Japanese:<%= note.japanese %></p>
-    <p>English:<%= note.korean %></p>
-    <p>Example sentense:<%= note.example %></p>
-    <p>Frequency:<%= note.fq %></p>
+    <p><span class="no_important">Japanese:</span> <%= note.japanese %></p>
+    <p><span class="no_important">English:</span> <%= note.korean %></p>
+    <p><span class="no_important">Example sentense:</span> <%= note.example %></p>
+    <p><span class="no_important">Frequency:</span> <%= note.fq %></p>
     <span class="time"><%= note.created_at %></span>
-    <%= link_to "Delete", "/note/#{note.id}/destroy", {method: :post} %>
-    <%= link_to "Edit", "/note/#{note.id}/edit" %>
+    <span class="no_important"><%= link_to "Delete", "/note/#{note.id}/destroy", {method: :post} %></span>
+    <span class="no_important"><%= link_to "Edit", "/note/#{note.id}/edit" %></span>
   </div class="container">
 <% end %>
