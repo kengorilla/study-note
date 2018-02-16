@@ -8,12 +8,12 @@
 </head>
 <header>
 <div class="contents">
-<ul>
+<ul class="menu">
   <% if @current_user %>
     <li><%= link_to "About", "/top" %></li>
     <li><%= link_to "Quiz", "/quiz/home" %></li>
     <li><%= link_to "Add word", "/note/new" %></li>
-    <li><%= link_to "Words", "/note/index" %></li>
+    <li><%= link_to "Word", "/note/index" %></li>
     <li><%= link_to "Add Diary", "/post/new" %></li>
     <li><%= link_to "Diaries", "/post/index" %></li>
     <li><%= link_to "All users", "/user/index" %></li>
