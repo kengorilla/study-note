@@ -20,6 +20,10 @@ class QuizController < ApplicationController
     @correct_answer = Note.find_by(id: params[:id])
   end
   
+  def answer2
+    @correct_answer = Note.find_by(id: params[:id])
+  end
+  
   def home2
     @current_user_note=Note.where(user_id: @current_user.id).shuffle.first
   end
@@ -31,7 +35,7 @@ class QuizController < ApplicationController
         redirect_to "/quiz/japanese/home"
     else    
         flash[:notice]="Incorrect"
-        redirect_to "/quiz/#{@note.id}/answer"
+        redirect_to "/quiz/#{@note.id}/answer2"
     end
   end
   

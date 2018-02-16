@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   post "/quiz/:id/check" => "quiz#check"
   post "/quiz/:id/check/japanese" => "quiz#check2"
   get "/quiz/:id/answer" => "quiz#answer"
+  get "/quiz/:id/answer2" => "quiz#answer2"
   get "/quiz/japanese/home" => "quiz#home2"
  
 end
